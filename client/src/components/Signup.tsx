@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { css } from '@emotion/react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,18 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const Copyright = (props: any) => {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
 
 const theme = createTheme();
 
@@ -44,14 +32,24 @@ const SignUp = () => {
   };
 
   return (
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" 
+      sx={{
+        margin: 'auto',
+        paddingTop: '40px',
+        paddingBottom: '40px',
+        borderRadius: '32px',
+        backgroundColor: 'lightgray',
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            maxWidth: '80%',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -104,17 +102,13 @@ const SignUp = () => {
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="#" variant="body2"
-                sx={{
-                    fontWeight: 'bold'
-                  }}>
+                <Link href="#" variant="body2" sx={{ fontWeight: 'bold' }}>
                   Already have an account? Sign in
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
   );
 }
