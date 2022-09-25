@@ -12,10 +12,11 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { border } from '@mui/system';
 
 
 
-const theme = createTheme();
+
 
 const SignUp = () => {
 
@@ -35,8 +36,7 @@ const SignUp = () => {
       <Container component="main" maxWidth="xs" 
       sx={{
         margin: 'auto',
-        paddingTop: '40px',
-        paddingBottom: '40px',
+        paddingY: '55px',
         borderRadius: '32px',
         backgroundColor: 'lightgray',
         display: 'flex',
@@ -73,6 +73,11 @@ const SignUp = () => {
                   autoComplete="email"
                   value={email}
                   onChange={(e)=>setEmail(e.target.value)}
+                  sx={{ 
+                    div: {
+                      borderRadius: '16px',
+                    },
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -88,7 +93,11 @@ const SignUp = () => {
                   id="password"
                   value={password}
                   onChange={(e)=>setPassword(e.target.value)}
-
+                  sx={{
+                    div: {
+                      borderRadius: '16px'
+                    }
+                  }}
                 />
               </Grid>
             </Grid>
@@ -96,7 +105,7 @@ const SignUp = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, borderRadius: '20px'}}
             >
               Continue
             </Button>
