@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { border } from '@mui/system';
-
+import sh from '../utils/sh';
 
 
 
@@ -23,13 +23,39 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password')
+  //   });
+  // };
+
+  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   sh.get('https://jsonplaceholder.typicode.com/todos/1')
+  //     .then((res) => {
+  //       console.log(res)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  // };
+
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password')
-    });
+    sh.post('https://jsonplaceholder.typicode.com/posts', {
+      title: email,
+      body: password,
+    })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   };
 
   return (
@@ -68,7 +94,7 @@ const Signup = () => {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  // label="Email Address"
                   name="email"
                   autoComplete="email"
                   value={email}
@@ -89,13 +115,13 @@ const Signup = () => {
                   fullWidth
                   name="password"
                   label="Create a password"
-                  type="password"
+                  // type="password"
                   id="password"
                   value={password}
                   onChange={(e)=>setPassword(e.target.value)}
                   sx={{
                     div: {
-                      borderRadius: '16px'
+                      borderRadius: '16px',
                     }
                   }}
                 />
