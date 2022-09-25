@@ -94,7 +94,7 @@ const Signup = () => {
                   required
                   fullWidth
                   id="email"
-                  // label="Email Address"
+                  placeholder='Email Address*'
                   name="email"
                   autoComplete="email"
                   value={email}
@@ -114,8 +114,8 @@ const Signup = () => {
                   required
                   fullWidth
                   name="password"
-                  label="Create a password"
-                  // type="password"
+                  placeholder="Create a password*"
+                  type="password"
                   id="password"
                   value={password}
                   onChange={(e)=>setPassword(e.target.value)}
