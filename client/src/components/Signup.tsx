@@ -18,7 +18,7 @@ import { border } from '@mui/system';
 
 
 
-const SignUp = () => {
+const Signup = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,7 +28,7 @@ const SignUp = () => {
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('email'),
-      password: data.get('password'),
+      password: data.get('password')
     });
   };
 
@@ -122,4 +122,4 @@ const SignUp = () => {
   );
 }
 
-export default SignUp
+export default Signup
