@@ -18,30 +18,10 @@ import sh from '../utils/sh';
 
 
 
-const Signup = () => {
+const Register = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get('email'),
-  //     password: data.get('password')
-  //   });
-  // };
-
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   sh.get('https://jsonplaceholder.typicode.com/todos/1')
-  //     .then((res) => {
-  //       console.log(res)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  // };
 
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -148,4 +128,4 @@ const Signup = () => {
   );
 }
 
-export default Signup
+export default Register
