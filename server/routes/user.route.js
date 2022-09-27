@@ -9,8 +9,9 @@ const cors = require('cors');
 
 
 //Here we are configuring express to use body-parser as middle-ware.
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({extended: true}));
+// To parse the incoming requests with JSON payloads
+app.use(express.json());
 //app.use(cors());
 
 router.get("/", (req, res) => {
