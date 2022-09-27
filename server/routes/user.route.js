@@ -5,21 +5,26 @@ const axios= require("axios")
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const cors = require('cors');
 
 
 
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+//app.use(cors());
 
 router.get("/", (req, res) => {
-    console.log(req.query);
+
+	res.json({user: 'made'})
 
 })
 
 
 router.post("/", async (req, res) => {
-    
+
+    console.log(req.body.title);
+	console.log(req.body.body);
 	try {
 		const { error } = validate(req.body);
 		if (error)
