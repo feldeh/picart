@@ -2,8 +2,7 @@
 
 import './App.css'
 
-import Signup from './components/Signup'
-// import SignupForm from './components/SignupForm'
+import Register from './components/Register'
 
 
 
@@ -12,7 +11,7 @@ const App: React.FunctionComponent = () => {
 
   return (
     <div>
-      <Signup />
+      <Register />
     </div>
   )
 }

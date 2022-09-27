@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { css } from '@emotion/react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,71 +12,51 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import axios from "axios";
-import {Link as dom_link, useNavigate} from "react-router-dom"
+import { border } from '@mui/system';
+import sh from '../utils/sh';
 
 
-const Copyright = (props: any) => {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
-const theme = createTheme();
 
-const SignUp = () => {
+const Register = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError]= useState("");
 
 
-
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const bodyFormData = new FormData();
-    bodyFormData.append('userName', 'Fred');
-    try {
-      const url= "http://localhost:8080/api/users";
-      console.log("this is data" + data.values);
-      
-       await axios.post(url, bodyFormData.append('userName', 'Fred'));
-      // console.log(res.message);
-      
-    } catch (error : any) {
-      if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-        console.log("this is called");
-        
-				setError(error.response.data.message);
-			}
-    }
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
+    sh.post('https://jsonplaceholder.typicode.com/posts', {
+      title: email,
+      body: password,
+    })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   };
 
   return (
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" 
+      sx={{
+        margin: 'auto',
+        paddingY: '55px',
+        borderRadius: '32px',
+        backgroundColor: 'lightgray',
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            maxWidth: '80%',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -96,11 +75,16 @@ const SignUp = () => {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  placeholder='Email Address*'
                   name="email"
                   autoComplete="email"
                   value={email}
                   onChange={(e)=>setEmail(e.target.value)}
+                  sx={{ 
+                    div: {
+                      borderRadius: '16px',
+                    },
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -111,12 +95,16 @@ const SignUp = () => {
                   required
                   fullWidth
                   name="password"
-                  label="Create a password"
+                  placeholder="Create a password*"
                   type="password"
                   id="password"
                   value={password}
                   onChange={(e)=>setPassword(e.target.value)}
-
+                  sx={{
+                    div: {
+                      borderRadius: '16px',
+                    }
+                  }}
                 />
               </Grid>
             </Grid>
@@ -124,25 +112,21 @@ const SignUp = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, borderRadius: '20px'}}
             >
               Continue
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="#" variant="body2"
-                sx={{
-                    fontWeight: 'bold'
-                  }}>
+                <Link href="#" variant="body2" sx={{ fontWeight: 'bold' }}>
                   Already have an account? Sign in
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
   );
 }
 
-export default SignUp
+export default Register
