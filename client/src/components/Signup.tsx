@@ -13,6 +13,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from "axios";
+import {Link as dom_link, useNavigate} from "react-router-dom"
+
 
 const Copyright = (props: any) => {
   return (
@@ -33,14 +36,37 @@ const SignUp = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError]= useState("");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const bodyFormData = new FormData();
+    bodyFormData.append('userName', 'Fred');
+    try {
+      const url= "http://localhost:8080/api/users";
+      console.log("this is data" + data.values);
+      
+       await axios.post(url, bodyFormData.append('userName', 'Fred'));
+      // console.log(res.message);
+      
+    } catch (error : any) {
+      if (
+				error.response &&
+				error.response.status >= 400 &&
+				error.response.status <= 500
+			) {
+        console.log("this is called");
+        
+				setError(error.response.data.message);
+			}
+    }
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
   };
 
   return (

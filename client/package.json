@@ -13,8 +13,10 @@
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.5",
     "@mui/system": "^5.10.6",
+    "axios": "^0.27.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.1"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.2",
