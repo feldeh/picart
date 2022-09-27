@@ -3,7 +3,6 @@ const { User, validate } = require("../model/user");
 const bcrypt = require("bcrypt");
 const axios= require("axios")
 const express = require("express");
-const bodyParser = require("body-parser");
 const app = express();
 const cors = require('cors');
 

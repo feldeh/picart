@@ -27,12 +27,12 @@ const Register = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    sh.post('https://jsonplaceholder.typicode.com/posts', {
+    sh.post('/api/users', {
       title: email,
       body: password,
     })
       .then((res) => {
-        console.log(res)
+        console.log(res) 
       })
       .catch((err) => {
         console.log(err)
