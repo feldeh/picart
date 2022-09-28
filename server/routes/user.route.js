@@ -15,7 +15,7 @@ app.use(express.json());
 //app.use(cors());
 
 router.get("/", (req, res) => {
-
+	//console.log("this req body " + req.body);
 	res.json({user: 'made'})
 
 })
@@ -23,10 +23,13 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
 
-    console.log(req.body.title);
-	console.log(req.body.body);
+    //console.log(req.body);
+	console.log("email: " + req.body.email);
+	console.log("password: " + req.body.password);
 	try {
+		
 		const { error } = validate(req.body);
+		
 		if (error)
 			return res.status(400).send({ message: error.details[0].message });
 
@@ -37,6 +40,7 @@ router.post("/", async (req, res) => {
 				.send({ message: "User with given email already Exist!" });
 
 		const salt = await bcrypt.genSalt(Number(process.env.SALT));
+		console.log("this salt: " + salt);
 		const hashPassword = await bcrypt.hash(req.body.password, salt);
 
 		await new User({ ...req.body, password: hashPassword }).save();

@@ -14,29 +14,48 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { border } from '@mui/system';
 import sh from '../utils/sh';
+import axios from 'axios';
+import {Link as dom_Link, useNavigate } from "react-router-dom";
 
 
 
 
 const Register = () => {
 
+  // const [data, setData] = useState({
+	// 	firstName: "",
+	// 	lastName: "",
+	// 	email: "",
+	// 	password: "",
+	// });
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError]= useState("");
 
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    sh.post('/api/users', {
-      title: email,
-      body: password,
-    })
-      .then((res) => {
-        console.log(res) 
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    try {
+			const url = "http://localhost:8080/api/users";
+			const { data: res } = await axios.post(url, {
+      email: email,
+      password: password,
+    });
+			 
+			console.log(res.message);
+		} catch (error : any) {
+			if (
+     
+        
+				error.response &&
+				error.response.status >= 400 &&
+				error.response.status <= 500
+			) {
+        console.log(error.message);
+				setError(error.response.data.message);
+			}
+		}
   };
 
   return (
