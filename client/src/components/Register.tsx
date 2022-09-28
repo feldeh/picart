@@ -37,25 +37,19 @@ const Register = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-			const url = "http://localhost:8080/api/users";
-			const { data: res } = await axios.post(url, {
-      email: email,
-      password: password,
-    });
-			 
-			console.log(res.message);
-		} catch (error : any) {
-			if (
-     
-        
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-        console.log(error.message);
-				setError(error.response.data.message);
-			}
-		}
+      const { data: res } = await sh.post('/api/users', {
+        email: email,
+        password: password,
+      })
+      console.log(res.message)
+    } catch (error: any) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500)
+        console.log(error.message)
+        setError(error.response.data.message);
+    }
   };
 
   return (
