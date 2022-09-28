@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
         }
 
         //check if user exists 
-        const user = await User.findOne({emai: req.body.email})
+        const user = await User.findOne({email: req.body.email})
         if(!user) {
             return res.status.apply(401).send({message: "invalid email or password"})
         }
