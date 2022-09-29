@@ -1,5 +1,6 @@
 const {User}  = require ("../model/user");
 const Joi = require("joi");
+const bcrypt = require("bcrypt");
 
 
 exports.handleLogin = async (req, res) => {
@@ -30,12 +31,12 @@ exports.handleLogin = async (req, res) => {
         const token = user.generateAuthToken();
         res.status(200).send({ data: token, message: "logged in successfully" });
     } catch (error) {
+        console.log(error)
         res.status(500).send({ message: "Internal Server Error" });
     }
 };
 
 const validate = (data) => {
-    console.log("jooooi")
 	const schema = Joi.object({
 		email: Joi.string().email().required().label("Email"),
 		password: Joi.string().required().label("Password"),
