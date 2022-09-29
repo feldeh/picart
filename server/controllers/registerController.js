@@ -1,29 +1,8 @@
-const router = require("express").Router();
 const { User, validate } = require("../model/user");
 const bcrypt = require("bcrypt");
-const axios= require("axios")
-const express = require("express");
-const app = express();
-const cors = require('cors');
 
+exports.handleNewUser = async (req, res) => {
 
-
-//Here we are configuring express to use body-parser as middle-ware.
-app.use(express.urlencoded({extended: true}));
-// To parse the incoming requests with JSON payloads
-app.use(express.json());
-//app.use(cors());
-
-router.get("/", (req, res) => {
-	//console.log("this req body " + req.body);
-	res.json({user: 'made'})
-
-})
-
-
-router.post("/", async (req, res) => {
-
-    //console.log(req.body);
 	console.log("email: " + req.body.email);
 	console.log("password: " + req.body.password);
 	try {
@@ -48,6 +27,5 @@ router.post("/", async (req, res) => {
 	} catch (error) {
 		res.status(500).send({ message: "Internal Server Error" });
 	}
-});
+};
 
-module.exports = router;

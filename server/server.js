@@ -4,19 +4,20 @@ const app= express();
 const cors= require('cors');
 
 const db_connection = require("./database/database_auth");
-const userRoutes = require ('./routes/user.route');
-const authRoutes = require('./routes/auth.routes');
+const userRoutes = require ('./routes/register');
+const authRoutes = require('./routes/auth');
 
 
 //database connection
 db_connection();
 
 //middelwares
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cors());
 
 //routes
-app.use('/api/users', userRoutes);
+app.use('/api/register', userRoutes);
 app.use('/api/auth', authRoutes);
 
 
