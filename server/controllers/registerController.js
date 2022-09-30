@@ -19,7 +19,6 @@ exports.handleNewUser = async (req, res) => {
 				.send({ message: "User with given email already Exist!" });
 
 		const salt = await bcrypt.genSalt(Number(process.env.SALT));
-		console.log("this salt: " + salt);
 		const hashPassword = await bcrypt.hash(req.body.password, salt);
 
 		await new User({ ...req.body, password: hashPassword }).save();

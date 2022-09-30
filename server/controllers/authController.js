@@ -14,6 +14,8 @@ exports.handleLogin = async (req, res) => {
 
         //check if user exists 
         const user = await User.findOne({email: req.body.email})
+        console.log(user)
+        console.log(user.email)
         if(!user) {
             return res.status.apply(401).send({message: "invalid email or password"})
         }

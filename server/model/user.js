@@ -21,13 +21,11 @@ userSchema.methods.generateAuthToken = function () {
 const User = mongoose.model("user", userSchema)
 
 const validate = async (data) => {
-    console.log('this is data efore joi ' + data.email +  " " + data.password);
     const schema = joi.object({
        
         email:     joi.string().email().required().label("Email"),
         password:  passwordComplexity().required().label("Password")
     })
-    console.log("this is schema: " + await schema.validate(data) );
     return await schema.validate(data)
 }
 

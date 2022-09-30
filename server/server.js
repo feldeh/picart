@@ -4,7 +4,7 @@ const app= express();
 const cors= require('cors');
 
 const db_connection = require("./database/database_auth");
-const userRoutes = require ('./routes/register');
+const registerRoutes = require ('./routes/register');
 const authRoutes = require('./routes/auth');
 
 
@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 //routes
-app.use('/api/register', userRoutes);
+app.use('/api/register', registerRoutes);
 app.use('/api/auth', authRoutes);
 
 
