@@ -13,8 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { border } from '@mui/system';
-import sh from '../utils/sh';
-import axios from 'axios';
+import axios from '../api/axios';
 import {Link as dom_Link, useNavigate } from "react-router-dom";
 
 
@@ -40,22 +39,19 @@ export const Register = () => {
 
     })
     .catch((err) => {
-        if (
-            err.res &&
-            err.res.status >= 400 &&
-            err.res.status <= 500
-        ) {
+        if (err.res) {
             console.log(err.res.data)
             console.log(err.res.status)
             console.log(err.res.headers)
             console.log(err.toJSON())
 
         } else if (err.request) {
-            console.log(err.request)
+            // console.log(err.request)
+            console.log(err.request.response)
         } else {
             console.log('Error', err.message)
         }
-        console.log(err.config)
+        // console.log(err.config)
     
     })
 }
@@ -84,7 +80,7 @@ export const Register = () => {
             {/* <LockOutlinedIcon /> */}
           </Avatar>
           <Typography component="h1" variant="h5">
-            Welcome to Pinterest
+            Welcome to Pinterest register
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>

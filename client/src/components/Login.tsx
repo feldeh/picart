@@ -29,34 +29,34 @@ export const Login = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        axios.post('/api/users', {
+        axios.post('/api/auth', {
             email: email,
             password: password,
         })
         .then((res) => {
-            console.log(res.data)
-            console.log(JSON.stringify(res.data))
-
+          console.log(res.data)
+          console.log(res.data.message)
+          if (res.data.accessToken) {
+            localStorage.setItem("user", res.data.accessToken)
+          }
+  
         })
         .catch((err) => {
-            if (
-                err.res &&
-                err.res.status >= 400 &&
-                err.res.status <= 500
-            ) {
-                console.log(err.res.data)
-                console.log(err.res.status)
-                console.log(err.res.headers)
-                console.log(err.toJSON())
-
-            } else if (err.request) {
-                console.log(err.request)
-            } else {
-                console.log('Error', err.message)
-            }
-            console.log(err.config)
-        
-        })
+          if (err.res) {
+              console.log(err.res.data)
+              console.log(err.res.status)
+              console.log(err.res.headers)
+              console.log(err.toJSON())
+  
+          } else if (err.request) {
+              // console.log(err.request)
+              console.log(err.request.response)
+          } else {
+              console.log('Error', err.message)
+          }
+          // console.log(err.config)
+      
+      })
     }
 
   return (

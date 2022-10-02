@@ -11,7 +11,7 @@ const App: React.FunctionComponent = () => {
 
   return (
     <div>
-      {/* <Register /> */}
+      <Register />
       <Login />
     </div>
   )
