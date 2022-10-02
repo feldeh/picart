@@ -1,64 +1,63 @@
-import * as React from 'react';
-import { useState } from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { border } from '@mui/system';
-import sh from '../utils/sh';
-import axios from 'axios';
-import {Link as dom_Link, useNavigate } from "react-router-dom";
+import * as React from 'react'
+import { useState } from 'react'
+import {
+        Avatar,
+        Button,
+        CssBaseline,
+        TextField,
+        Link,
+        Grid,
+        Box,
+        Typography,
+        Container,
+} from '@mui/material'
+import VisibilityIcon from "@mui/icons-material/Visibility"
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"
+import axios from '../api/axios'
 
 
 
-export const Register = () => {
+
+export const Login = () => {
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError]= useState("")
 
 
-
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [error, setError]= useState("");
-
+  
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    axios.post("/api/register", {
-        email: email,
-        password: password,
-    })
-    .then((res) => {
-        console.log(res.data)
-        console.log(JSON.stringify(res.data))
+        event.preventDefault()
+        axios.post('/api/users', {
+            email: email,
+            password: password,
+        })
+        .then((res) => {
+            console.log(res.data)
+            console.log(JSON.stringify(res.data))
 
-    })
-    .catch((err) => {
-        if (
-            err.res &&
-            err.res.status >= 400 &&
-            err.res.status <= 500
-        ) {
-            console.log(err.res.data)
-            console.log(err.res.status)
-            console.log(err.res.headers)
-            console.log(err.toJSON())
+        })
+        .catch((err) => {
+            if (
+                err.res &&
+                err.res.status >= 400 &&
+                err.res.status <= 500
+            ) {
+                console.log(err.res.data)
+                console.log(err.res.status)
+                console.log(err.res.headers)
+                console.log(err.toJSON())
 
-        } else if (err.request) {
-            console.log(err.request)
-        } else {
-            console.log('Error', err.message)
-        }
-        console.log(err.config)
-    
-    })
-}
+            } else if (err.request) {
+                console.log(err.request)
+            } else {
+                console.log('Error', err.message)
+            }
+            console.log(err.config)
+        
+        })
+    }
 
   return (
       <Container component="main" maxWidth="xs" 
@@ -81,7 +80,6 @@ export const Register = () => {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            {/* <LockOutlinedIcon /> */}
           </Avatar>
           <Typography component="h1" variant="h5">
             Welcome to Pinterest
@@ -98,7 +96,7 @@ export const Register = () => {
                   id="email"
                   placeholder='Email Address*'
                   name="email"
-                  autoComplete="email"
+                  autoComplete="off"
                   value={email}
                   onChange={(e)=>setEmail(e.target.value)}
                   sx={{ 
@@ -135,19 +133,17 @@ export const Register = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2, borderRadius: '20px'}}
             >
-              Continue
+              Sign In
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
                 <Link href="#" variant="body2" sx={{ fontWeight: 'bold' }}>
-                  Already have an account? Sign in
+                  Not on Pinterest yet? Sign Up
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
       </Container>
-  );
+  )
 }
-
-export default Register

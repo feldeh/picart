@@ -1,8 +1,8 @@
 // App.tsx is our app container
 
 import './App.css'
-
-import Register from './components/Register'
+import {Login} from './components/Login'
+import {Register} from './components/Register'
 
 
 
@@ -11,7 +11,8 @@ const App: React.FunctionComponent = () => {
 
   return (
     <div>
-      <Register />
+      {/* <Register /> */}
+      <Login />
     </div>
   )
 }
