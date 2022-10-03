@@ -6,6 +6,7 @@ import Register from './components/Register'
 import RecipeReviewCard from './components/Header'
 import WovenImageList from './components/Homepage1'
 import NavScrollExample from './components/Navbar'
+import Header from './components/Navbar1'
 
 
 
@@ -18,7 +19,8 @@ const App: React.FunctionComponent = () => {
       {/* <Register /> */}
       {/* <RecipeReviewCard /> */}
       {/* <WovenImageList /> */}
-      <NavScrollExample />
+      {/* <NavScrollExample /> */}
+      <Header /> 
     </div>
   )
 }
