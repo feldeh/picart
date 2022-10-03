@@ -1,9 +1,9 @@
 //rfce
-import React from 'react'
-// import { Container, styled } from '@mui/system'
-import styled from 'styled-components'
+// import React from 'react'
+import * as React from 'react';
+import styled from "styled-components"
 //Pin is inside mainboard
-import Pin from './Pin';
+import Pin from "./Pin";
 
 
 function Mainboard() {
@@ -11,7 +11,7 @@ function Mainboard() {
     <div>
         <Wrapper>
             <Container>
-                <h1>Hello</h1>
+                <Pin />
             </Container>
 
         </Wrapper>
