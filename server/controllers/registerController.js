@@ -13,6 +13,7 @@ exports.handleNewUser = async (req, res) => {
 			return res.status(400).send({ message: error.details[0].message });
 
 		const user = await User.findOne({ email: req.body.email });
+		
 		if (user)
 			return res
 				.status(409)
@@ -24,7 +25,7 @@ exports.handleNewUser = async (req, res) => {
 		await new User({ ...req.body, password: hashPassword }).save();
 		res.status(201).send({ message: "User created successfully" });
 	} catch (error) {
-		res.status(500).send({ message: "Internal Server Error" });
+		res.status(500).send({ message: "Error creating user" });
 	}
 };
 

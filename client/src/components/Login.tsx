@@ -11,8 +11,6 @@ import {
         Typography,
         Container,
 } from '@mui/material'
-import VisibilityIcon from "@mui/icons-material/Visibility"
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"
 import axios from '../api/axios'
 
 
@@ -20,9 +18,10 @@ import axios from '../api/axios'
 
 export const Login = () => {
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError]= useState("")
+  const [email, setEmail] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
+  const [login, setLogin] = useState<boolean>(false)
+  const [error, setError]= useState<string>("")
 
 
   
@@ -38,6 +37,7 @@ export const Login = () => {
           console.log(res.data.message)
           if (res.data.accessToken) {
             localStorage.setItem("user", res.data.accessToken)
+            setLogin(true)
           }
   
         })

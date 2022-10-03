@@ -32,10 +32,7 @@ const handleLogin = async (req, res) => {
             return res.status(401).json({message: "Invalid Email or Password"});
         }
 
-        // const token = user.generateAuthToken();
-        // res.status(200).send({ accessToken: token, message: "logged in successfully" });
-
-        // sign token with user.email
+        // sign JWT token with user.email
         const accessToken = jwt.sign(
             {
                 "email": user.email 
@@ -52,11 +49,11 @@ const handleLogin = async (req, res) => {
             { expiresIn: '1d'}
         )
 
-        res.cookie('jwt', refreshToken, {
+        res.cookie('accessToken', refreshToken, {
             httpOnly: true,
             secure: true,
             sameSite: 'None',
-            // cookie expiry: set to match rT
+            // cookie expiry: set to match refreshToken
             maxAge: 24 * 60 * 60 * 1000
         })
 
