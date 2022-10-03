@@ -5,13 +5,13 @@ import styled from 'styled-components'
 //Pin is inside mainboard
 import Pin from './Pin';
 
+
 function Mainboard() {
   return (
     <div>
         <Wrapper>
             <Container>
-                <Pin />
-
+                <h1>Hello</h1>
             </Container>
 
         </Wrapper>
@@ -28,9 +28,9 @@ background-color: white;
 display: flex;
 width: 100%;
 height: 100%;
-margin-top: 15px;
 justify-content: center;
 `
+//margin-top: 15px;
 
 const Container = styled.div`
 display: flex;
