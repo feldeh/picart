@@ -5,6 +5,7 @@ import './App.css'
 import Register from './components/Register'
 import RecipeReviewCard from './components/Header'
 import WovenImageList from './components/Homepage1'
+import NavScrollExample from './components/Navbar'
 
 
 
@@ -16,7 +17,8 @@ const App: React.FunctionComponent = () => {
     <div>
       {/* <Register /> */}
       {/* <RecipeReviewCard /> */}
-      <WovenImageList />
+      {/* <WovenImageList /> */}
+      <NavScrollExample />
     </div>
   )
 }
