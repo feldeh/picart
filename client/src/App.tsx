@@ -5,6 +5,8 @@ import './App.css'
 import Register from './components/Register'
 import WovenImageList from './components/Homepage1'
 import Header from './components/Navbar1'
+import Mainboard from './components/Mainboard';
+
 
 
 
@@ -17,6 +19,7 @@ const App: React.FunctionComponent = () => {
       {/* <Register /> */}
       {/* <WovenImageList /> */}
       <Header /> 
+      <Mainboard /> 
     </div>
   )
 }
