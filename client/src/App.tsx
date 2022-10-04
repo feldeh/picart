@@ -13,8 +13,8 @@ const App: React.FunctionComponent = () => {
 
   return (
     <Routes>
-      <Route index element={<Login />} />
-      <Route path='register' element={<Register />} />
+      <Route index element={<Register />} />
+      <Route path='login' element={<Login />} />
       <Route path='home' element={<Home />} />
     </Routes>
   )

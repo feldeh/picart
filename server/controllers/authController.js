@@ -32,7 +32,7 @@ const handleLogin = async (req, res) => {
             return res.status(401).json({message: "Invalid Email or Password"});
         }
 
-        // sign JWT token with user.email
+        // create and sign JWT token with user.email
         const accessToken = jwt.sign(
             {
                 "email": user.email 

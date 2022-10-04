@@ -11,6 +11,7 @@ import {
         Typography,
         Container,
 } from '@mui/material'
+import { Link as RouterLink} from 'react-router-dom'
 import axios from '../api/axios'
 
 
@@ -137,7 +138,7 @@ export const Login = () => {
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="#" variant="body2" sx={{ fontWeight: 'bold' }}>
+                <Link component={RouterLink} to='/' variant="body2" sx={{ fontWeight: 'bold' }}>
                   Not on Pinterest yet? Sign Up
                 </Link>
               </Grid>
