@@ -14,7 +14,10 @@ db_connection();
 //middelwares
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3002',
+    credentials: true
+}));
 
 //routes
 app.use('/api/register', registerRoutes);
