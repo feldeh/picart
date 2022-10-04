@@ -10,6 +10,7 @@ import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
 
 export default function MasonryImageList() {
   return (
@@ -22,9 +23,13 @@ export default function MasonryImageList() {
               srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}
               loading="lazy"
+        
             />
           
-            <StarBorderIcon color="success" />
+            <StarBorderIcon color="primary" />
+
+            {/* //TITLE NOT WORKING UNDER ITEM */}
+            <ImageListItemBar position="below" title={item.title} />
 
           </ImageListItem>
         ))}
@@ -37,6 +42,7 @@ const itemData = [
   {
     img: 'https://images.unsplash.com/photo-1549388604-817d15aa0110',
     title: 'Bed',
+   
   },
   {
     img: 'https://images.unsplash.com/photo-1525097487452-6278ff080c31',
