@@ -1,10 +1,12 @@
-// App.tsx is our app container
 
-import './App.css'
 
-import Register from './components/Register'
-import WovenImageList from './components/Homepage1'
-import Header from './components/Navbar1'
+import React from 'react'
+import MasonryImageList from './components/Homepage1'
+// import Register from './components/Register'
+// import Header from './components/Navbar1'
+import SimpleContainer from './components/SimpleContainer'
+
+
 
 
 
@@ -19,8 +21,9 @@ const App: React.FunctionComponent = () => {
   return (
     <div>
       {/* <Register /> */}
-      <Header />
-      {/* <WovenImageList /> */}
+      {/* <Header /> */}
+      <MasonryImageList />
+      {/* <SimpleContainer /> */}
     
      
     </div>
