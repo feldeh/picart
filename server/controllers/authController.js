@@ -1,4 +1,4 @@
-const {User}  = require ("../model/user");
+const { User }  = require ("../model/user");
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
@@ -49,7 +49,7 @@ const handleLogin = async (req, res) => {
             { expiresIn: '1d'}
         )
 
-        res.cookie('accessToken', refreshToken, {
+        res.cookie('jwt', refreshToken, {
             httpOnly: true,
             secure: true,
             sameSite: 'None',

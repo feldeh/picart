@@ -32,13 +32,14 @@ export const Login = () => {
         axios.post('/api/auth', {
             email: email,
             password: password,
-        })
+        },
+        { withCredentials: true })
         .then((res) => {
           console.log(res.data)
           console.log(res.data.message)
           if (res.data.accessToken) {
-            localStorage.setItem("user", res.data.accessToken)
-            setLogin(true)
+            // localStorage.setItem("user", res.data.accessToken)
+            // setLogin(true)
           }
   
         })
