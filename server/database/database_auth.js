@@ -1,6 +1,7 @@
 
 const mongoose = require("mongoose");
 const dotenv = require('dotenv');
+
 dotenv.config();
 
 const { MONGO_URI } = process.env;
@@ -22,6 +23,9 @@ module.exports = () => {
        console.error(error);
        process.exit(1);
      });
+
+
+    
  };
 
 // module.exports= () => {

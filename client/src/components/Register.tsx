@@ -37,7 +37,7 @@ const Register = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const { data: res } = await sh.post('/api/users', {
+      const { data: res } = await sh.post('/api/register', {
         email: email,
         password: password,
       })

@@ -1,4 +1,4 @@
-const { User, validate } = require("../model/user");
+const { User, validate } = require("../model/user.model");
 const bcrypt = require("bcrypt");
 
 exports.handleNewUser = async (req, res) => {
@@ -6,9 +6,7 @@ exports.handleNewUser = async (req, res) => {
 	console.log("email: " + req.body.email);
 	console.log("password: " + req.body.password);
 	try {
-		
 		const { error } = validate(req.body);
-		
 		if (error)
 			return res.status(400).send({ message: error.details[0].message });
 

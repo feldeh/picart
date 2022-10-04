@@ -1,6 +1,7 @@
-const {User}  = require ("../model/user");
+const {User}  = require ("../model/user.model");
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
 
 
 exports.handleLogin = async (req, res) => {
@@ -18,6 +19,8 @@ exports.handleLogin = async (req, res) => {
         console.log(user.email)
         if(!user) {
             return res.status.apply(401).send({message: "invalid email or password"})
+        }else{
+
         }
 
         //check if password valid
@@ -31,12 +34,15 @@ exports.handleLogin = async (req, res) => {
         }
 
         const token = user.generateAuthToken();
+        
         res.status(200).send({ data: token, message: "logged in successfully" });
     } catch (error) {
         console.log(error)
         res.status(500).send({ message: "Internal Server Error" });
     }
 };
+
+
 
 const validate = (data) => {
 	const schema = Joi.object({
@@ -45,3 +51,8 @@ const validate = (data) => {
 	});
 	return schema.validate(data);
 };
+
+
+
+
+
