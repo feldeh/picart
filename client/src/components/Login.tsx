@@ -11,7 +11,7 @@ import {
         Typography,
         Container,
 } from '@mui/material'
-import { Link as RouterLink} from 'react-router-dom'
+import { Link as RouterLink, Navigate} from 'react-router-dom'
 import axios from '../api/axios'
 
 
@@ -21,6 +21,7 @@ export const Login = () => {
 
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
+  const [redirect, setRedirect] = useState<boolean>(false)
   const [login, setLogin] = useState<boolean>(false)
   const [error, setError]= useState<string>("")
 
@@ -57,9 +58,13 @@ export const Login = () => {
               console.log('Error', err.message)
           }
           // console.log(err.config)
-      
-      })
-    }
+        })
+        setRedirect(true)
+  }
+
+  if (redirect) {
+    return <Navigate to='/home' />
+  }
 
   return (
       <Container component="main" maxWidth="xs" 

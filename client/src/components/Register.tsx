@@ -4,17 +4,13 @@ import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
-// import FormControlLabel from '@mui/material/FormControlLabel'
 import Link from '@mui/material/Link'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { border } from '@mui/system'
 import axios from '../api/axios'
-import {Link as RouterLink, useNavigate } from "react-router-dom"
+import {Link as RouterLink, useNavigate, Navigate } from "react-router-dom"
 
 
 
@@ -24,6 +20,7 @@ export const Register = () => {
 
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
+  const [redirect, setRedirect] = useState<boolean>(false)
   const [error, setError]= useState("")
 
 
@@ -54,7 +51,12 @@ export const Register = () => {
         // console.log(err.config)
     
     })
-}
+    setRedirect(true)
+  }
+
+  if (redirect) {
+    return <Navigate to='/login' />
+  }
 
   return (
       <Container component="main" maxWidth="xs" 
