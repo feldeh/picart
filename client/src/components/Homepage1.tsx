@@ -9,11 +9,12 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 export default function MasonryImageList() {
   return (
-    <Box sx={{ width: 1200, height: 550, overflowY: 'scroll' }}>
-      <ImageList variant="masonry" cols={4} gap={8}>
+    <Box sx={{ width: 1200, height: 450, overflowY: 'scroll' }}>
+      <ImageList variant="masonry" cols={4} gap={12}>
         {itemData.map((item) => (
           <ImageListItem key={item.img}>
             <img
@@ -22,6 +23,9 @@ export default function MasonryImageList() {
               alt={item.title}
               loading="lazy"
             />
+          
+            <StarBorderIcon color="success" />
+
           </ImageListItem>
         ))}
       </ImageList>
@@ -138,3 +142,7 @@ const itemData = [
   //   title: 'building',
   // },
 ];
+
+
+
+
