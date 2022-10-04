@@ -1,8 +1,10 @@
 // App.tsx is our app container
 
 import './App.css'
-
-import Register from './components/Register'
+import { Route, Routes } from 'react-router-dom'
+import { Login } from './components/Login'
+import { Register } from './components/Register'
+import { Home } from './components/Home'
 
 
 
@@ -10,9 +12,11 @@ import Register from './components/Register'
 const App: React.FunctionComponent = () => {
 
   return (
-    <div>
-      <Register />
-    </div>
+    <Routes>
+      <Route index element={<Register />} />
+      <Route path='login' element={<Login />} />
+      <Route path='home' element={<Home />} />
+    </Routes>
   )
 }
 

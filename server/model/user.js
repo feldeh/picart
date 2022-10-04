@@ -12,8 +12,8 @@ const userSchema = new mongoose.Schema({
 
 
 userSchema.methods.generateAuthToken = function () {
-	const token = jwt.sign({ _id: this._id }, process.env.JWTPRIVATEKEY, {
-		expiresIn: "7d",
+	const token = jwt.sign({ _id: this._id }, process.env.ACCESS_TOKEN_SECRET, {
+		expiresIn: "30s",
 	});
 	return token;
 }; 
@@ -21,13 +21,11 @@ userSchema.methods.generateAuthToken = function () {
 const User = mongoose.model("user", userSchema)
 
 const validate = async (data) => {
-    console.log('this is data efore joi ' + data.email +  " " + data.password);
     const schema = joi.object({
        
         email:     joi.string().email().required().label("Email"),
         password:  passwordComplexity().required().label("Password")
     })
-    console.log("this is schema: " + await schema.validate(data) );
     return await schema.validate(data)
 }
 

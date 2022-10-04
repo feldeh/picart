@@ -4,22 +4,26 @@ const app= express();
 const cors= require('cors');
 
 const db_connection = require("./database/database_auth");
-const userRoutes = require ('./routes/user.route');
-const authRoutes = require('./routes/auth.routes');
+const registerRoutes = require ('./routes/registerRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 
 //database connection
 db_connection();
 
 //middelwares
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3002',
+    credentials: true
+}));
 
 //routes
-app.use('/api/users', userRoutes);
+app.use('/api/register', registerRoutes);
 app.use('/api/auth', authRoutes);
 
 
 
 const port = process.env.PORT || 8080;
-app.listen(port, () => console.log(`Listeninng on port ${port}`))
+app.listen(port, () => console.log(`Server running on port ${port}`))

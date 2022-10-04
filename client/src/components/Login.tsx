@@ -1,60 +1,65 @@
 import * as React from 'react'
 import { useState } from 'react'
-import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
-import CssBaseline from '@mui/material/CssBaseline'
-import TextField from '@mui/material/TextField'
-// import FormControlLabel from '@mui/material/FormControlLabel'
-import Link from '@mui/material/Link'
-import Grid from '@mui/material/Grid'
-import Box from '@mui/material/Box'
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
-import Typography from '@mui/material/Typography'
-import Container from '@mui/material/Container'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { border } from '@mui/system'
+import {
+        Avatar,
+        Button,
+        CssBaseline,
+        TextField,
+        Link,
+        Grid,
+        Box,
+        Typography,
+        Container,
+} from '@mui/material'
+import { Link as RouterLink} from 'react-router-dom'
 import axios from '../api/axios'
-import {Link as RouterLink, useNavigate } from "react-router-dom"
 
 
 
-export const Register = () => {
 
-
+export const Login = () => {
 
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
-  const [error, setError]= useState("")
+  const [login, setLogin] = useState<boolean>(false)
+  const [error, setError]= useState<string>("")
 
+
+  
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    axios.post("/api/register", {
-        email: email,
-        password: password,
-    })
-    .then((res) => {
-        console.log(res.data)
-        console.log(JSON.stringify(res.data))
-
-    })
-    .catch((err) => {
-        if (err.res) {
-            console.log(err.res.data)
-            console.log(err.res.status)
-            console.log(err.res.headers)
-            console.log(err.toJSON())
-
-        } else if (err.request) {
-            // console.log(err.request)
-            console.log(err.request.response)
-        } else {
-            console.log('Error', err.message)
-        }
-        // console.log(err.config)
-    
-    })
-}
+        event.preventDefault()
+        axios.post('/api/auth', {
+            email: email,
+            password: password,
+        },
+        { withCredentials: true })
+        .then((res) => {
+          console.log(res.data)
+          console.log(res.data.message)
+          if (res.data.accessToken) {
+            // localStorage.setItem("user", res.data.accessToken)
+            // setLogin(true)
+          }
+  
+        })
+        .catch((err) => {
+          if (err.res) {
+              console.log(err.res.data)
+              console.log(err.res.status)
+              console.log(err.res.headers)
+              console.log(err.toJSON())
+  
+          } else if (err.request) {
+              // console.log(err.request)
+              console.log(err.request.response)
+          } else {
+              console.log('Error', err.message)
+          }
+          // console.log(err.config)
+      
+      })
+    }
 
   return (
       <Container component="main" maxWidth="xs" 
@@ -77,10 +82,9 @@ export const Register = () => {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            {/* <LockOutlinedIcon /> */}
           </Avatar>
           <Typography component="h1" variant="h5">
-            Welcome to Pinterest register
+            Welcome to Pinterest
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -94,7 +98,7 @@ export const Register = () => {
                   id="email"
                   placeholder='Email Address*'
                   name="email"
-                  autoComplete="email"
+                  autoComplete="off"
                   value={email}
                   onChange={(e)=>setEmail(e.target.value)}
                   sx={{ 
@@ -131,12 +135,12 @@ export const Register = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2, borderRadius: '20px'}}
             >
-              Continue
+              Sign In
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link component={RouterLink} to='/login' variant="body2" sx={{ fontWeight: 'bold' }}>
-                  Already have an account? Sign in
+                <Link component={RouterLink} to='/' variant="body2" sx={{ fontWeight: 'bold' }}>
+                  Not on Pinterest yet? Sign Up
                 </Link>
               </Grid>
             </Grid>
@@ -145,5 +149,3 @@ export const Register = () => {
       </Container>
   )
 }
-
-export default Register
