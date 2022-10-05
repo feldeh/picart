@@ -11,7 +11,7 @@ import {
         Typography,
         Container,
 } from '@mui/material'
-import { Link as RouterLink, Navigate} from 'react-router-dom'
+import { Link as RouterLink, useNavigate} from 'react-router-dom'
 import axios from '../api/axios'
 import { useCookies } from 'react-cookie'
 
@@ -27,7 +27,7 @@ export const Login = () => {
   const [login, setLogin] = useState<boolean>(false)
   const [error, setError]= useState<string>("")
 
-
+const navigate = useNavigate()
   
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -46,7 +46,8 @@ export const Login = () => {
             sameSite: "none",
             secure: true,
             maxAge: 3600,
-          });
+          })
+          navigate('/')
         })
         .catch((err) => {
           if (err.res) {
@@ -66,9 +67,7 @@ export const Login = () => {
         setRedirect(true)
   }
 
-  if (redirect) {
-    return <Navigate to='/' />
-  }
+    
 
   return (
       <Container component="main" maxWidth="xs" 
