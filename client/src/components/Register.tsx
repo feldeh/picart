@@ -137,7 +137,7 @@ export const Register = () => {
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link component={RouterLink} to='/login' variant="body2" sx={{ fontWeight: 'bold' }}>
+                <Link component={RouterLink} to='/' variant="body2" sx={{ fontWeight: 'bold' }}>
                   Already have an account? Sign in
                 </Link>
               </Grid>
