@@ -57,12 +57,10 @@ const navigate = useNavigate()
               console.log(err.toJSON())
   
           } else if (err.request) {
-              // console.log(err.request)
               console.log(err.request.response)
           } else {
               console.log('Error', err.message)
           }
-          // console.log(err.config)
         })
   }
 

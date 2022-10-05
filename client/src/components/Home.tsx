@@ -20,14 +20,6 @@ export const Home = () => {
 
   return (
     <>
-            <Button
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2, borderRadius: '20px'}}
-              onClick={handleLogout}
-            >
-              Logout
-            </Button>
     <ImageList sx={{ width: 500, height: 450 }}>
       <ImageListItem key="Subheader" cols={2}>
         <ListSubheader component="div">December</ListSubheader>
@@ -55,6 +47,14 @@ export const Home = () => {
         </ImageListItem>
       ))}
     </ImageList>
+    <Button
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, borderRadius: '20px'}}
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
     </>
   )
 }
