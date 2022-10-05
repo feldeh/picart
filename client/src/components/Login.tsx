@@ -64,7 +64,6 @@ const navigate = useNavigate()
           }
           // console.log(err.config)
         })
-        setRedirect(true)
   }
 
     

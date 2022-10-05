@@ -10,7 +10,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import axios from '../api/axios'
-import {Link as RouterLink, useNavigate, Navigate } from "react-router-dom"
+import { Link as RouterLink, useNavigate} from 'react-router-dom'
 
 
 
@@ -23,6 +23,7 @@ export const Register = () => {
   const [redirect, setRedirect] = useState<boolean>(false)
   const [error, setError]= useState("")
 
+  const navigate = useNavigate()
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -33,8 +34,10 @@ export const Register = () => {
     .then((res) => {
         console.log(res.data)
         console.log(JSON.stringify(res.data))
+        navigate('/')
 
     })
+    
     .catch((err) => {
         if (err.res) {
             console.log(err.res.data)
@@ -51,12 +54,8 @@ export const Register = () => {
         // console.log(err.config)
     
     })
-    setRedirect(true)
   }
 
-  if (redirect) {
-    return <Navigate to='/login' />
-  }
 
   return (
       <Container component="main" maxWidth="xs" 
