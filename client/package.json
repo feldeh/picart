@@ -12,11 +12,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.6",
-<<<<<<< HEAD
-    "@mui/material": "^5.10.7",
-=======
     "@mui/material": "^5.10.5",
->>>>>>> dev
     "@mui/system": "^5.10.6",
     "axios": "^0.27.2",
     "react": "^18.2.0",
@@ -28,7 +24,6 @@
     "@emotion/babel-plugin": "^11.10.2",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
-    "@types/styled-components": "^5.1.26",
     "@vitejs/plugin-react": "^2.1.0",
     "axios": "^0.27.2",
     "install": "^0.13.0",

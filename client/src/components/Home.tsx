@@ -8,6 +8,7 @@ import InfoIcon from '@mui/icons-material/Info'
 import { Button } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
+import Navbar1 from './Navbar1'
 
 
 export const Home = () => {
@@ -54,7 +55,7 @@ export const Home = () => {
               onClick={handleLogout}
             >
               Logout
-            </Button>
+    </Button>
     </>
   )
 }
