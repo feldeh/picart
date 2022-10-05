@@ -6,9 +6,11 @@ const pexels_client = createClient(process.env.PEXELS_API_KEY)
 const page= 1
 const url = `https://api.pexels.com/v1/curated?page=${page}&per_page=40`
 const get_photo =  axios.get(url, 
-    {
+    {headers : 
+        {
         'Authorization' : process.env.PEXELS_API_KEY
-    }).then((res) => {console.log("this is data " + res.data);})
+        }
+    }).then((res) => {console.log("this is data " + res.data.page);})
     .catch((error) => {console.error(error.message);})
 
 
