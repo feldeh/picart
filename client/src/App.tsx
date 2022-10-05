@@ -1,10 +1,10 @@
 
 
 import React from 'react'
-import MasonryImageList from './components/Homepage1'
 // import Register from './components/Register'
 // import Header from './components/Navbar1'
-import SimpleContainer from './components/SimpleContainer'
+import MasonryImageList from './components/Homepage1'
+import Header from './components/Navbar1'
 
 
 
@@ -21,9 +21,9 @@ const App: React.FunctionComponent = () => {
   return (
     <div>
       {/* <Register /> */}
-      {/* <Header /> */}
+      <Header />
       <MasonryImageList />
-      {/* <SimpleContainer /> */}
+    
     
      
     </div>
