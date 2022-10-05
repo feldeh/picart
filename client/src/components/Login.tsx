@@ -11,8 +11,9 @@ import {
         Typography,
         Container,
 } from '@mui/material'
-import { Link as RouterLink} from 'react-router-dom'
+import { Link as RouterLink, useNavigate} from 'react-router-dom'
 import axios from '../api/axios'
+import { useCookies } from 'react-cookie'
 
 
 
@@ -21,10 +22,12 @@ export const Login = () => {
 
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
+  const [redirect, setRedirect] = useState<boolean>(false)
+  const [cookies, setCookie] = useCookies<string>(["userToken"])
   const [login, setLogin] = useState<boolean>(false)
   const [error, setError]= useState<string>("")
 
-
+const navigate = useNavigate()
   
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -34,14 +37,17 @@ export const Login = () => {
             password: password,
         },
         { withCredentials: true })
+        
         .then((res) => {
           console.log(res.data)
           console.log(res.data.message)
-          if (res.data.accessToken) {
-            // localStorage.setItem("user", res.data.accessToken)
-            // setLogin(true)
-          }
-  
+          setCookie("userToken", res.data.accessToken, {
+            path: "/",
+            sameSite: "none",
+            secure: true,
+            maxAge: 3600,
+          })
+          navigate('/')
         })
         .catch((err) => {
           if (err.res) {
@@ -57,9 +63,11 @@ export const Login = () => {
               console.log('Error', err.message)
           }
           // console.log(err.config)
-      
-      })
-    }
+        })
+        setRedirect(true)
+  }
+
+    
 
   return (
       <Container component="main" maxWidth="xs" 
@@ -139,7 +147,7 @@ export const Login = () => {
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link component={RouterLink} to='/' variant="body2" sx={{ fontWeight: 'bold' }}>
+                <Link component={RouterLink} to='/register' variant="body2" sx={{ fontWeight: 'bold' }}>
                   Not on Pinterest yet? Sign Up
                 </Link>
               </Grid>

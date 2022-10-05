@@ -38,7 +38,7 @@ const handleLogin = async (req, res) => {
                 "email": user.email 
             },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '10s' }
+            { expiresIn: '10m' }
         )
 
         const refreshToken = jwt.sign(
@@ -50,6 +50,7 @@ const handleLogin = async (req, res) => {
         )
 
         res.cookie('jwt', refreshToken, {
+            // prevents client-side scripts access
             httpOnly: true,
             secure: true,
             sameSite: 'None',

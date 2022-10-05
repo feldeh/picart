@@ -5,11 +5,29 @@ import ImageListItemBar from '@mui/material/ImageListItemBar'
 import ListSubheader from '@mui/material/ListSubheader'
 import IconButton from '@mui/material/IconButton'
 import InfoIcon from '@mui/icons-material/Info'
+import { Button } from '@mui/material'
 import { useEffect, useState } from 'react'
+import { useCookies } from 'react-cookie'
 
 
 export const Home = () => {
+  
+  const [cookies, setCookie, removeCookie] = useCookies(["userToken"]);
+
+  const handleLogout = () => {
+    removeCookie("userToken", { path: "/", sameSite: "none", secure: true });
+  }
+
   return (
+    <>
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, borderRadius: '20px'}}
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
     <ImageList sx={{ width: 500, height: 450 }}>
       <ImageListItem key="Subheader" cols={2}>
         <ListSubheader component="div">December</ListSubheader>
@@ -37,6 +55,7 @@ export const Home = () => {
         </ImageListItem>
       ))}
     </ImageList>
+    </>
   )
 }
 

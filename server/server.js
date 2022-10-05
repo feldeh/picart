@@ -15,7 +15,9 @@ db_connection();
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:3002',
+    // set Access-Control-Allow-Origin
+    origin: ['http://localhost:3002', 'http://localhost:3001'],
+    // set Access-Control-Allow-Credentials
     credentials: true
 }));
 
