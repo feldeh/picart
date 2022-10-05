@@ -12,7 +12,7 @@ import {
     Container
 } from '@mui/material'
 import { Link as RouterLink, useNavigate } from 'react-router-dom'
-import axios from '../api/axios'
+import axios from '../../api/axios'
 import { useCookies } from 'react-cookie'
 
 export const Login = () => {
