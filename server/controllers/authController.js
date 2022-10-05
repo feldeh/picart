@@ -2,7 +2,6 @@ const { User }  = require ("../model/user");
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
-const asyncHandler = require('express-async-handler');
 
 
 const handleLogin = async (req, res) => {
@@ -41,23 +40,6 @@ const handleLogin = async (req, res) => {
             { expiresIn: '10m' }
         )
 
-        const refreshToken = jwt.sign(
-            {
-                "email": user.email
-            }, 
-            process.env.REFRESH_TOKEN_SECRET,
-            { expiresIn: '1d'}
-        )
-
-        res.cookie('jwt', refreshToken, {
-            // prevents client-side scripts access
-            httpOnly: true,
-            secure: true,
-            sameSite: 'None',
-            // cookie expiry: set to match refreshToken
-            maxAge: 24 * 60 * 60 * 1000
-        })
-
         res.status(200).json({ accessToken, message: "logged in successfully" });
 
     } catch (error) {
@@ -74,38 +56,6 @@ const validate = (data) => {
 	return schema.validate(data);
 };
 
-const handleRefresh = (req, res) => {
-    const cookies = req.cookies
-
-    if (!cookies?.jwt) return res.status(401).json({ message: 'Unauthorized' })
-
-    const refreshToken = cookies.jwt
-
-    jwt.verify(
-        refreshToken,
-        process.env.REFRESH_TOKEN_SECRET,
-        asyncHandler(async (err, decoded) => {
-            console.log(decoded)
-            console.log(decoded.email)
-            // catch error from the verify process
-            if (err) return res.status(403).json({ message: 'Forbidden' })
-            // check if the email from the decoded email that should be inside of the refresh token exist in the db
-            const foundUser = await User.findOne({ email: decoded.email }).exec()
-
-            if (!foundUser) return res.status(401).json({ message: 'Unauthorized' })
-
-            const accessToken = jwt.sign(
-                {
-                    "email": user.email 
-                },
-                process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: '10s' }
-            )
-
-            res.json({ accessToken })
-        })
-    )
-}
 
 const handleLogout = (req, res) => {
     const cookies = req.cookies
@@ -116,6 +66,5 @@ const handleLogout = (req, res) => {
 
 module.exports = {
     handleLogin,
-    handleRefresh,
     handleLogout
 }
