@@ -5,10 +5,11 @@ const cors= require('cors');
 const pictures = require('./model/pictures.model')
 
 const db_connection = require("./database/database_auth");
-const registerRoutes = require ('./routes/register');
-const authRoutes = require('./routes/auth');
+const registerRoutes = require ('./routes/registerRoutes');
+const authRoutes = require('./routes/authRoutes');
 const loginRouter = require('./routes/login.route');
 const fetcher = require('./utils/db_seeder');
+const savedRouter = require('./routes/savedRoutes')
 const { default: mongoose } = require('mongoose');
 
 
@@ -38,6 +39,7 @@ app.use(cors({
 app.use('/api/register', registerRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/login', loginRouter);
+app.use('/api/saved', savedRouter)
 
 
 
