@@ -4,13 +4,13 @@ const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 
 
-exports.handleLogin = async (req, res) => {
+const handleLogin = async (req, res) => {
     try {
 
         //check for error
         const {error} = validate(req.body);
         if (error){
-            return res.status(400).send({message: error.details[0].message});
+            return res.status(400).json({message: error.details[0].message});
         }
 
         //check if user exists 
@@ -30,15 +30,23 @@ exports.handleLogin = async (req, res) => {
 		);
 
         if(!validPassword){
-            return res.status(401).send({message: "Invalid Email or Password"});
+            return res.status(401).json({message: "Invalid Email or Password"});
         }
 
-        const token = user.generateAuthToken();
-        
-        res.status(200).send({ data: token, message: "logged in successfully" });
+        // create and sign JWT token with user.email
+        const accessToken = jwt.sign(
+            {
+                "email": user.email 
+            },
+            process.env.ACCESS_TOKEN_SECRET,
+            { expiresIn: '10m' }
+        )
+
+        res.status(200).json({ accessToken, message: "logged in successfully" });
+
     } catch (error) {
         console.log(error)
-        res.status(500).send({ message: "Internal Server Error" });
+        res.status(500).json({ message: "Internal Server Error" });
     }
 };
 
@@ -53,6 +61,14 @@ const validate = (data) => {
 };
 
 
+const handleLogout = (req, res) => {
+    const cookies = req.cookies
+    if (!cookies?.jwt) return res.sendStatus(204) //No content
+    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true })
+    res.json({ message: 'Cookie cleared' })
+}
 
-
-
+module.exports = {
+    handleLogin,
+    handleLogout
+}
