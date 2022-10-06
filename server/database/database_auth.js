@@ -1,16 +1,16 @@
 
 const mongoose = require("mongoose");
 const dotenv = require('dotenv');
-
+const get_photo = require('./db_seeder')
 dotenv.config();
 
-const { MONGO_URI } = process.env;
+//const { MONGO_URI } = process.env;
 
 
 module.exports = () => {
    // Connecting to the database
    mongoose
-     .connect(MONGO_URI, {
+     .connect(process.env.MONGO_URI, {
        useNewUrlParser: true,
        useUnifiedTopology: true,
 
@@ -25,7 +25,9 @@ module.exports = () => {
      });
 
 
-    
+    //  mongoose.connection.once('open',  () => {
+    //   get_photo();
+    //  })
  };
 
 // module.exports= () => {
