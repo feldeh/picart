@@ -1,4 +1,4 @@
-import { Button } from '@mui/material'
+import Button from './Button.styles'
 import { useCookies } from 'react-cookie'
 
 const LogoutButton = () => {
@@ -8,11 +8,7 @@ const LogoutButton = () => {
         removeCookie('userToken', { path: '/', sameSite: 'none', secure: true })
     }
     return (
-        <Button
-            variant="contained"
-            sx={{ mt: 3, mb: 2, borderRadius: '20px' }}
-            onClick={handleLogout}
-        >
+        <Button variant="contained" onClick={handleLogout}>
             Logout
         </Button>
     )

@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material'
 import ImageCard from '../UI/ImageCard'
-import LogoutButton from '../UI/LogoutButton'
+import LogoutButton from '../UI/Button/LogoutButton'
 
 export const HomeLayout = () => {
     return (

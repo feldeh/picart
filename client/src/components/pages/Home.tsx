@@ -5,10 +5,7 @@ import ImageListItemBar from '@mui/material/ImageListItemBar'
 import ListSubheader from '@mui/material/ListSubheader'
 import IconButton from '@mui/material/IconButton'
 import InfoIcon from '@mui/icons-material/Info'
-import { Button } from '@mui/material'
-import { useEffect, useState } from 'react'
-import { useCookies } from 'react-cookie'
-import LogoutButton from '../UI/LogoutButton'
+import LogoutButton from '../UI/Button/LogoutButton'
 
 export const Home = () => {
     return (
