@@ -8,7 +8,7 @@ const db_connection = require("./database/database_auth");
 const registerRoutes = require ('./routes/register');
 const authRoutes = require('./routes/auth');
 const loginRouter = require('./routes/login.route');
-const fetcher = require('./database/db_seeder');
+const fetcher = require('./utils/db_seeder');
 const { default: mongoose } = require('mongoose');
 
 

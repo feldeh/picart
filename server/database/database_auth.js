@@ -1,7 +1,7 @@
 
 const mongoose = require("mongoose");
 const dotenv = require('dotenv');
-const get_photo = require('./db_seeder')
+const get_photo = require('../utils/db_seeder')
 dotenv.config();
 
 //const { MONGO_URI } = process.env;
