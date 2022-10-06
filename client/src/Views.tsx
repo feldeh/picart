@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 import { useCookies } from 'react-cookie'
 import ImageCard from './components/UI/ImageCard'
-import { HomeLayout } from './components/pages/HomeLayout'
+import { HomeLayout } from './components/pages/Home/HomeLayout'
 
 export const Views = () => {
     const [cookies, setCookie] = useCookies<string>(['userToken'])

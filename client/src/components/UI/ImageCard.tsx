@@ -2,10 +2,17 @@ import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { Button } from '@mui/material'
+import { margin } from '@mui/system'
 
 export default function ImageCard() {
     return (
-        <Card sx={{ maxWidth: '300px', borderRadius: 4, position: 'relative' }}>
+        <Card
+            sx={{
+                maxWidth: '300px',
+                borderRadius: 4,
+                position: 'relative',
+            }}
+        >
             <CardMedia
                 component="img"
                 height="250px"
@@ -21,7 +28,7 @@ export default function ImageCard() {
                     position: 'absolute',
                     top: -5,
                     right: -20,
-                    transform: 'translateX(-50%)'
+                    transform: 'translateX(-50%)',
                 }}
             >
                 save
