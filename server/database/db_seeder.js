@@ -1,22 +1,47 @@
 require('dotenv').config();
 const {createClient} = require('pexels')
 const axios = require('axios');
+const pictures =  require('../model/pictures.model')
 
-const pexels_client = createClient(process.env.PEXELS_API_KEY)
-const page= 1
-const url = `https://api.pexels.com/v1/curated?page=${page}&per_page=40`
-const get_photo =  axios.get(url, 
-    {headers : 
-        {
-        'Authorization' : process.env.PEXELS_API_KEY
-        }
-    }).then((res) => {console.log("this is data " + res.data.page);})
-    .catch((error) => {console.error(error.message);})
+
+
+
+    module.exports =  async function fetcher()  {
+
+    let dataArray= []
+    const page= 1
+    const url = `https://api.pexels.com/v1/curated?page=${page}&per_page=50`
+    console.log('called');
+    
+        await axios.get(url, 
+            {headers : 
+                {
+                'Authorization' : process.env.PEXELS_API_KEY
+                }
+            }).then((res) => {
+                for(picture_index = 1; picture_index < 50; picture_index++ ){
+                    console.log(" ------- PICUTRE INDEX ------      " + picture_index);
+                    let img= res.data.photos;
+                    let counter= img[picture_index];
+                    //console.log('counter.url');
+                    dataArray.push({url : counter.url, alt: counter.alt})
+                    //pictures.insertMany(res.data.photos)
+                    //console.log("this is data " + res.data.photos[1].url);
+                }
+                
+            
+            })
+            .catch((error) => {console.error(error.message);})
+   
+    
+    return dataArray;     
+ 
+    
+}
+
 
 
 // pexels_client.photos.show({ id: 2014422 }).then(photo => {
 //     console.log(photo.id);
 // })
 
-
-module.exports = {get_photo}
