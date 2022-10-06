@@ -8,14 +8,9 @@ import InfoIcon from '@mui/icons-material/Info'
 import { Button } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
+import LogoutButton from '../UI/LogoutButton'
 
 export const Home = () => {
-    const [cookies, setCookie, removeCookie] = useCookies(['userToken'])
-
-    const handleLogout = () => {
-        removeCookie('userToken', { path: '/', sameSite: 'none', secure: true })
-    }
-
     return (
         <>
             <ImageList sx={{ width: 500, height: 450 }}>
@@ -45,14 +40,7 @@ export const Home = () => {
                     </ImageListItem>
                 ))}
             </ImageList>
-            <Button
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2, borderRadius: '20px' }}
-                onClick={handleLogout}
-            >
-                Logout
-            </Button>
+            <LogoutButton />
         </>
     )
 }

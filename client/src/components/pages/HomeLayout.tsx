@@ -1,9 +1,11 @@
 import { Grid } from '@mui/material'
 import ImageCard from '../UI/ImageCard'
+import LogoutButton from '../UI/LogoutButton'
 
 export const HomeLayout = () => {
     return (
-        <div>
+        <>
+            <LogoutButton />
             <Grid container spacing={10}>
                 <Grid item m={1}>
                     <ImageCard />
@@ -14,6 +16,6 @@ export const HomeLayout = () => {
                     <ImageCard />
                 </Grid>
             </Grid>
-        </div>
+        </>
     )
 }
