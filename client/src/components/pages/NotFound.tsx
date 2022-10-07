@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export const NotFound = () => {
-
     const navigate = useNavigate()
     useEffect(() => {
         setTimeout(() => {
@@ -10,9 +9,5 @@ export const NotFound = () => {
         }, 4000)
     }, [navigate])
 
-    return (
-        <div>
-            404 not found!
-        </div>
-  )
+    return <div>404 not found!</div>
 }
