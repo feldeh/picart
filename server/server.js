@@ -14,15 +14,18 @@ const { default: mongoose } = require('mongoose');
 
 //database connection
 dbConnection();
-db = dbConnection();
-mongoose.connection.once('open', async () => {
-  let data = await fetcher();
-  try {
-    pictures.insertMany(data);
-  } catch (error) {
-    console.error('this is the error  ' + error.message);
-  }
-});
+
+
+// Call to populate db
+
+// mongoose.connection.once('open', async () => {
+//   let data = await fetcher();
+//   try {
+//     pictures.insertMany(data);
+//   } catch (error) {
+//     console.error('this is the error  ' + error.message);
+//   }
+// });
 
 //middelwares
 app.use(express.urlencoded({ extended: true }));

@@ -11,7 +11,7 @@ const pictures =  require('../model/pictures.model')
     let dataArray= []
     const page= 4;
     const url = `https://api.pexels.com/v1/curated?page=${page}&per_page=50`
-    console.log('called');
+    console.log('called db utls');
     
         await axios.get(url, 
             {headers : 
