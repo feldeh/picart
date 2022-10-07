@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 const pictures = require('./model/pictures.model');
 
-const db_connection = require('./database/database_auth');
+const dbConnection = require('./database/dbConnection');
 const registerRoutes = require('./routes/registerRoutes');
 const authRoutes = require('./routes/authRoutes');
 const loginRouter = require('./routes/login.route');
@@ -13,8 +13,8 @@ const savedRouter = require('./routes/savedRoutes');
 const { default: mongoose } = require('mongoose');
 
 //database connection
-db_connection();
-db = db_connection();
+dbConnection();
+db = dbConnection();
 mongoose.connection.once('open', async () => {
   let data = await fetcher();
   try {
