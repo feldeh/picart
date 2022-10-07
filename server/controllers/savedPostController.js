@@ -1,5 +1,6 @@
 const  Saves = require('../model/saved.model')
 const {User} = require('../model/user.model');
+const pictures=  require('../model/pictures.model')
 const asyncHandler = require('express-async-handler')
 
 // @desc Get all notes 
@@ -8,16 +9,20 @@ const asyncHandler = require('express-async-handler')
 
 const getAllSaves = asyncHandler(async (req, res) => {
     const saves = await Saves.find().lean();
+    const pics = await pictures.find()
 
      // If no notes 
     if (!saves?.length) {
     return res.status(400).json({ message: 'No saved posts found' })
     }
-    res.json({ userEmail : email})
-    console.log("user email "  + email);
+
+    console.log(pictures.find());
+
+    res.send(pics)
+    // res.json({ userEmail : email})
+    // console.log("user email "  + email);
 })
 
- 
 
 
 // @desc Create new note

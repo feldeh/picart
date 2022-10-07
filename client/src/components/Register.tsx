@@ -26,14 +26,8 @@ export const Register = () => {
   const navigate = useNavigate()
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-<<<<<<< HEAD
-    event.preventDefault();
-    try {
-      const { data: res } = await sh.post('/api/register', {
-=======
     event.preventDefault()
     axios.post("/api/register", {
->>>>>>> e1f8bf03efc3a8a86ff2a398377ffbeaa5b5cde3
         email: email,
         password: password,
     })
