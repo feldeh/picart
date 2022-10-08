@@ -1,24 +1,34 @@
 const  Saves = require('../model/saved.model')
+const  express= require('express');
 const {User} = require('../model/user.model');
 const pictures=  require('../model/pictures.model')
 const asyncHandler = require('express-async-handler')
+const auth = require('./authController')
+
 
 // @desc Get all notes 
 // @route GET /notes
 // @access Private
 
+
+const app = express();
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
+
 const getAllSaves = asyncHandler(async (req, res) => {
     const saves = await Saves.find().lean();
     const pics = await pictures.find()
+
+    
 
      // If no notes 
     if (!saves?.length) {
     return res.status(400).json({ message: 'No saved posts found' })
     }
 
-    console.log(pictures.find());
-
-    res.send(pics)
+   // console.log(auth.handleLogin(req, res));
+    console.log("this is request body in saved : " + express.json(req));
+   // res.json(req.body)
     // res.json({ userEmail : email})
     // console.log("user email "  + email);
 })

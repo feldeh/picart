@@ -1,13 +1,19 @@
 const {User}  = require ("../model/user.model");
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
+const express = require('express')
 const jwt = require('jsonwebtoken');
+
+const app = express();
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
 
 
 const handleLogin = async (req, res) => {
     try {
 
         //check for error
+       // console.log('this is request body  ' + express.json(req.body) );
         const {error} = validate(req.body);
         if (error){
             return res.status(400).json({message: error.details[0].message});
