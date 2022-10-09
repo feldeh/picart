@@ -4,6 +4,7 @@ const {User} = require('../model/user.model');
 const pictures=  require('../model/pictures.model')
 const asyncHandler = require('express-async-handler')
 const auth = require('./authController')
+const verifyJWT = require('../middelwares/verifyJWT')
 
 
 // @desc Get all notes 
@@ -15,9 +16,12 @@ const app = express();
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
-const getAllSaves = asyncHandler(async (req, res) => {
+const getAllSaves = asyncHandler(verifyJWT, async (req, res, next) => {
+    console.log("getAll gets called");
     const saves = await Saves.find().lean();
     const pics = await pictures.find()
+
+
 
     
 
@@ -26,8 +30,8 @@ const getAllSaves = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: 'No saved posts found' })
     }
 
-   // console.log(auth.handleLogin(req, res));
-    console.log("this is request body in saved : " + express.json(req));
+    console.log('req header '  + req.email);
+    console.log("this is request body in saved : " + req.headers['x-access-token']);
    // res.json(req.body)
     // res.json({ userEmail : email})
     // console.log("user email "  + email);

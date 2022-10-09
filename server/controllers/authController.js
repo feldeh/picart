@@ -1,19 +1,15 @@
 const {User}  = require ("../model/user.model");
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
-const express = require('express')
 const jwt = require('jsonwebtoken');
-
-const app = express();
-app.use(express.urlencoded({extended: true}))
-app.use(express.json())
+const express = require('express')
+const router = express.Router()
 
 
-const handleLogin = async (req, res) => {
+const handleLogin = async (req, res, next) => {
     try {
 
         //check for error
-       // console.log('this is request body  ' + express.json(req.body) );
         const {error} = validate(req.body);
         if (error){
             return res.status(400).json({message: error.details[0].message});
@@ -21,19 +17,18 @@ const handleLogin = async (req, res) => {
 
         //check if user exists 
         const user = await User.findOne({email: req.body.email})
-        console.log(user)
-        console.log(user.email)
+        
         if(!user) {
-            return res.status.apply(401).send({message: "invalid email or password"})
+            return res.status(401).send({message: "invalid email or password"})
         }else{
 
         }
 
         //check if password valid
         const validPassword = await bcrypt.compare(
-			req.body.password,
-			user.password
-		);
+            req.body.password,
+            user.password
+        );
 
         if(!validPassword){
             return res.status(401).json({message: "Invalid Email or Password"});
@@ -48,6 +43,8 @@ const handleLogin = async (req, res) => {
             { expiresIn: '10m' }
         )
 
+        //res.status(200).send(user)
+        // next(user)
         res.status(200).json({ accessToken, message: "logged in successfully" });
 
     } catch (error) {
@@ -56,14 +53,18 @@ const handleLogin = async (req, res) => {
     }
 };
 
+// router.use((user, req, res, next)=> {
+//     res.status(200).send(user);
+// })
+
 
 
 const validate = (data) => {
-	const schema = Joi.object({
-		email: Joi.string().email().required().label("Email"),
-		password: Joi.string().required().label("Password"),
-	});
-	return schema.validate(data);
+    const schema = Joi.object({
+        email: Joi.string().email().required().label("Email"),
+        password: Joi.string().required().label("Password"),
+    });
+    return schema.validate(data);
 };
 
 
