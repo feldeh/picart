@@ -7,14 +7,11 @@ const pictures = require('./model/pictures.model');
 const dbConnection = require('./database/dbConnection');
 const registerRoutes = require('./routes/registerRoutes');
 const authRoutes = require('./routes/authRoutes');
-const loginRouter = require('./routes/login.route');
-const fetcher = require('./utils/db_seeder');
 const savedRouter = require('./routes/savedRoutes');
 const { default: mongoose } = require('mongoose');
 
 //database connection
 dbConnection();
-
 
 // Call to populate db
 
@@ -40,7 +37,6 @@ app.use(
 //routes
 app.use('/api/register', registerRoutes);
 app.use('/api/auth', authRoutes);
-app.use('/api/login', loginRouter);
 app.use('/api/saved', savedRouter);
 
 const port = process.env.PORT || 8080;

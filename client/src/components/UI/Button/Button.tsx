@@ -2,7 +2,7 @@ import StyledButton from './Button.css'
 
 type ButtonProps = {
     btnText: string
-    onClick?: () => void
+    onClick: () => void
     children?: React.ReactNode
 }
 
