@@ -85,7 +85,7 @@ export const Register = () => {
                     }}
                 />
                 <Typography component="h1" variant="h5">
-                    Welcome to Picart
+                    Sign up to see more
                 </Typography>
                 <Box
                     component="form"
@@ -159,7 +159,7 @@ export const Register = () => {
                                 variant="body2"
                                 sx={{ fontWeight: 'bold' }}
                             >
-                                Already have an account? Sign in
+                                Already have an account? Log in
                             </Link>
                         </Grid>
                     </Grid>

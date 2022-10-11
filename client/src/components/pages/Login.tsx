@@ -97,7 +97,7 @@ export const Login = () => {
                     }}
                 />
                 <Typography component="h1" variant="h5">
-                    Welcome to Picart
+                    Log in to see more
                 </Typography>
                 <Box
                     component="form"
@@ -161,7 +161,7 @@ export const Login = () => {
                         variant="contained"
                         sx={{ mt: 3, mb: 2, borderRadius: '20px' }}
                     >
-                        Sign In
+                        Log in
                     </Button>
                     <Grid container justifyContent="center">
                         <Grid item>
@@ -171,7 +171,7 @@ export const Login = () => {
                                 variant="body2"
                                 sx={{ fontWeight: 'bold' }}
                             >
-                                Not on Picart yet? Sign Up
+                                Not on Picart yet? Sign up
                             </Link>
                         </Grid>
                     </Grid>
