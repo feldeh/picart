@@ -1,7 +1,6 @@
 import { CardMedia, Grid, Paper, Typography } from '@mui/material'
 import Button from '../../UI/Button/Button'
 import { Button as MUIButton } from '@mui/material'
-
 import { useCookies } from 'react-cookie'
 import { useState, useEffect } from 'react'
 import axios from '../../../api/axios'
@@ -22,9 +21,6 @@ export const HomeLayout = () => {
             .get('http://localhost:8080/api/saved')
             .then((response) => {
                 setPictureData(response.data)
-
-                console.log('pictureData: ' + JSON.stringify(pictureData))
-                console.log('pictureData[0]: ' + JSON.stringify(pictureData[0]))
             })
             .catch((error) => {
                 setError(error)
