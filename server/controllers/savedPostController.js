@@ -9,7 +9,7 @@ const asyncHandler = require('express-async-handler');
 
 const getAllSaves = asyncHandler(async (req, res) => {
   const saves = await Saves.find().lean();
-  const pics = await pictures.find({}).limit(12);
+  const pics = await pictures.find({});
   console.log(pics);
 
   // If no notes

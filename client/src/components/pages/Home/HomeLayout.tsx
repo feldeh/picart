@@ -13,6 +13,7 @@ export const HomeLayout = () => {
     const handleLogout = () => {
         removeCookie('userToken', { path: '/', sameSite: 'none', secure: true })
     }
+
     const [pictureData, setPictureData] = useState<any>([])
 
     const [error, setError] = useState(null)
@@ -34,8 +35,7 @@ export const HomeLayout = () => {
 
     return (
         <>
-            {/* <ResponsiveAppBar /> */}
-            <Button btnText="logout" onClick={handleLogout} />
+            <ResponsiveAppBar />
             <Grid container>
                 {pictureData.map((picture: any, index: number) => (
                     <Grid key={index} item container xs={6} md={4} lg={3}>

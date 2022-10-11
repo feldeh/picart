@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import axios from '../../api/axios'
 import { Link as RouterLink, useNavigate } from 'react-router-dom'
+import PinterestIcon from '@mui/icons-material/Pinterest'
 
 export const Register = () => {
     const [email, setEmail] = useState<string>('')
@@ -25,7 +26,7 @@ export const Register = () => {
         axios
             .post('/api/register', {
                 email: email,
-                password: password
+                password: password,
             })
             .then((res) => {
                 console.log(res.data)
@@ -59,7 +60,7 @@ export const Register = () => {
                 borderRadius: '32px',
                 backgroundColor: 'lightgray',
                 display: 'flex',
-                justifyContent: 'center'
+                justifyContent: 'center',
             }}
         >
             <CssBaseline />
@@ -69,14 +70,22 @@ export const Register = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
                 }}
             >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                    {/* <LockOutlinedIcon /> */}
-                </Avatar>
+                <PinterestIcon
+                    color="primary"
+                    fontSize="large"
+                    sx={{
+                        display: {
+                            xs: 'flex',
+                            md: 'none',
+                        },
+                        mr: 1,
+                    }}
+                />
                 <Typography component="h1" variant="h5">
-                    Welcome to Pinterest register
+                    Welcome to Picart
                 </Typography>
                 <Box
                     component="form"
@@ -104,8 +113,8 @@ export const Register = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                                 sx={{
                                     div: {
-                                        borderRadius: '16px'
-                                    }
+                                        borderRadius: '16px',
+                                    },
                                 }}
                             />
                         </Grid>
@@ -128,8 +137,8 @@ export const Register = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                                 sx={{
                                     div: {
-                                        borderRadius: '16px'
-                                    }
+                                        borderRadius: '16px',
+                                    },
                                 }}
                             />
                         </Grid>

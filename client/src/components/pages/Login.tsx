@@ -9,12 +9,12 @@ import {
     Grid,
     Box,
     Typography,
-    Container
+    Container,
 } from '@mui/material'
 import { Link as RouterLink, useNavigate } from 'react-router-dom'
 import axios from '../../api/axios'
 import { useCookies } from 'react-cookie'
-
+import PinterestIcon from '@mui/icons-material/Pinterest'
 export const Login = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
@@ -32,7 +32,7 @@ export const Login = () => {
                 '/api/auth',
                 {
                     email: email,
-                    password: password
+                    password: password,
                 },
                 { withCredentials: true }
             )
@@ -44,7 +44,7 @@ export const Login = () => {
                     path: '/',
                     sameSite: 'none',
                     secure: true,
-                    maxAge: 3600
+                    maxAge: 3600,
                 })
                 navigate('/')
             })
@@ -72,7 +72,7 @@ export const Login = () => {
                 borderRadius: '32px',
                 backgroundColor: 'lightgray',
                 display: 'flex',
-                justifyContent: 'center'
+                justifyContent: 'center',
             }}
         >
             <CssBaseline />
@@ -82,12 +82,22 @@ export const Login = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
                 }}
             >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
+                <PinterestIcon
+                    color="primary"
+                    fontSize="large"
+                    sx={{
+                        display: {
+                            xs: 'flex',
+                            md: 'none',
+                        },
+                        mr: 1,
+                    }}
+                />
                 <Typography component="h1" variant="h5">
-                    Welcome to Pinterest
+                    Welcome to Picart
                 </Typography>
                 <Box
                     component="form"
@@ -115,8 +125,8 @@ export const Login = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                                 sx={{
                                     div: {
-                                        borderRadius: '16px'
-                                    }
+                                        borderRadius: '16px',
+                                    },
                                 }}
                             />
                         </Grid>
@@ -139,8 +149,8 @@ export const Login = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                                 sx={{
                                     div: {
-                                        borderRadius: '16px'
-                                    }
+                                        borderRadius: '16px',
+                                    },
                                 }}
                             />
                         </Grid>
@@ -161,7 +171,7 @@ export const Login = () => {
                                 variant="body2"
                                 sx={{ fontWeight: 'bold' }}
                             >
-                                Not on Pinterest yet? Sign Up
+                                Not on Picart yet? Sign Up
                             </Link>
                         </Grid>
                     </Grid>
