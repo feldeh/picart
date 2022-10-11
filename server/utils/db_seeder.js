@@ -15,20 +15,29 @@ module.exports = async function fetcher() {
         Authorization: process.env.PEXELS_API_KEY,
       },
     })
-    .then((res) => {
+    .then(async (res) => {
       for (picture_index = 1; picture_index < 15; picture_index++) {
         let img = res.data.photos;
         let counter = img[picture_index];
+        
         if (counter.alt != '') {
-          dataArray.push({ src: counter.src.large, alt: counter.alt });
+            
+            const exists = await pictures.findOne({src: counter.src.large})
+            console.log('value of exists : ' + exists);
+            if(exists == null){
+                console.log('current push()' + {src: counter.src.large, alt: counter.alt });
+                dataArray.push({src: counter.src.large, alt: counter.alt });
+            }
+          
           // console.log(counter.src.large);
         }
 
         console.log(counter.width);
 
-        pictures.insertMany(dataArray);
+       
         // console.log('this is data ' + res.data.photos[1].url);
       }
+      pictures.insertMany(dataArray);
     })
     .catch((error) => {
       console.error(error.message);
