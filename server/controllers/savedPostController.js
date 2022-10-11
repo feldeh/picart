@@ -27,20 +27,18 @@ app.use(verifyJWT)
 // })
 
 
-const getAllSaves = asyncHandler(async (req, res, next) => {
+const getAllSaves = asyncHandler(async (req, res) => {
+    verifyJWT(req, res)
     console.log("getAll gets called");
-    const saves = await Saves.find().lean();
+    const saves = await Saves.find({user: req.email}).lean();
     const pics = await pictures.find()
-    console.log('req.headers = ' + req.headers);
-    verifyJWT(req, res, next)
-
+   
 
     //console.log("getAll gets called" + req.headers.authorization);
 
-    const token = req.headers.authorization.split(' ')[1];
    
   
-    res.send('works')
+    
 
 
     //res.send('none')
@@ -51,7 +49,7 @@ const getAllSaves = asyncHandler(async (req, res, next) => {
     if (!saves?.length) {
     return res.status(400).json({ message: 'No saved posts found' })
     }
-
+    res.json(saves)
    
     // res.json({ userEmail : email})
     // console.log("user email "  + email);
@@ -63,22 +61,13 @@ const getAllSaves = asyncHandler(async (req, res, next) => {
 // @route POST /notes
 // @access Private
 
-const createSave= asyncHandler(async (req, res) => {
- //   const {email, url, alt}= req.body;
-
-    // if (!url || !alt || !email){
-    //     return res.status(400).json({ message: 'not enough fields' })
-    // }
-
-    // const checkDuplicate = await Saves.findOne({url}).lean().exec();
-
-    // if (duplicate) {
-    //     return res.status(409).json({ message: 'Duplicate url' })
-    // }
-
+const createSave= asyncHandler(async (req, res, next) => {
+    verifyJWT(req, res, next)
+    console.log('request email : ' + req.email);
     console.log('called saves');
-     await new Saves({ user: "633ea7aaffdfa0845fc0da32", url: "https://www.pexels.com/photo/sliced-bread-with-white-cream-on-white-ceramic-plate-13636706/", alt: "Free stock photo of breakfast, pancakes"}).save()
-    
+     await new Saves({ user: req.email, url: "https://www.pexels.com/photo/sliced-bread-with-white-cream-on-white-ceramic-plate-13636706/", alt: "Free stock photo of breakfast, pancakes"}).save()
+     
+
     res.send('addedd')
 })
 

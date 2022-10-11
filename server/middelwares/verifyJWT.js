@@ -19,9 +19,10 @@ const verifyJWT = (req, res, next) => {
             if (err) return res.status(403).json({ message: 'Forbidden' })
             console.log("verifyJWTS: decoded email= " + decoded.email);
             req.email = decoded.email
-            next()
+           // next()
         }
     )
+
 }
 
 module.exports = verifyJWT 
