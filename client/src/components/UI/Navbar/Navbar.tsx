@@ -91,93 +91,12 @@ const ResponsiveAppBar = () => {
                     </Typography>
                     <AddIcon
                         sx={{
+                            flexGrow: '0.02',
                             fontSize: '40px',
-                            flexGrow: 1,
                             display: { xs: 'flex', md: 'flex' },
                             backgroundPosition: 'left',
                         }}
                     />
-
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: 'none', md: 'none' },
-                        }}
-                    >
-                        {/* {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))} */}
-                    </Box>
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: 'none', md: 'none' },
-                        }}
-                    >
-                        {/* {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))} */}
-                    </Box>
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: 'none', md: 'none' },
-                        }}
-                    >
-                        {/* {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))} */}
-                    </Box>
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: 'none', md: 'none' },
-                        }}
-                    >
-                        {/* {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))} */}
-                    </Box>
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: 'none', md: 'none' },
-                        }}
-                    >
-                        {/* {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))} */}
-                    </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
