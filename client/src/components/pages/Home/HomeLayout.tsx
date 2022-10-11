@@ -5,6 +5,7 @@ import { useCookies } from 'react-cookie'
 import { useState, useEffect } from 'react'
 import axios from '../../../api/axios'
 import StyledCard from '../../UI/Card/Card.css'
+import ResponsiveAppBar from '../../UI/Navbar/Navbar'
 
 export const HomeLayout = () => {
     const [cookies, setCookie, removeCookie] = useCookies(['userToken'])
@@ -33,6 +34,7 @@ export const HomeLayout = () => {
 
     return (
         <>
+            {/* <ResponsiveAppBar /> */}
             <Button btnText="logout" onClick={handleLogout} />
             <Grid container>
                 {pictureData.map((picture: any, index: number) => (
