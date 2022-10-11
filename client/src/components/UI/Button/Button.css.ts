@@ -1,8 +1,8 @@
 import { Button as MUIButton } from '@mui/material'
 import styled from '@emotion/styled'
 
-const Button = styled(MUIButton)`
+const StyledButton = styled(MUIButton)`
     border-radius: 20px;
 `
 
-export default Button
+export default StyledButton

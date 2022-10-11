@@ -21,7 +21,7 @@ module.exports = () => {
       process.exit(1);
     });
 
-  //  mongoose.connection.once('open',  () => {
+  // mongoose.connection.once('open', () => {
   //   get_photo();
-  //  })
+  // });
 };
