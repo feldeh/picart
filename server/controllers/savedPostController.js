@@ -1,10 +1,12 @@
-const  Saves = require('../model/saved.model')
-const  express= require('express');
-const {User} = require('../model/user.model');
-const pictures=  require('../model/pictures.model')
-const asyncHandler = require('express-async-handler')
-const auth = require('./authController')
-const verifyJWT = require('../middelwares/verifyJWT')
+const Saves       =     require('../model/saved.model')
+const express     =     require('express');
+const {User}      =     require('../model/user.model');
+const pictures    =     require('../model/pictures.model')
+const asyncHandler =    require('express-async-handler')
+const auth        =     require('./authController')
+const verifyJWT   =     require('../middelwares/verifyJWT')
+const jwt         =     require('jsonwebtoken');
+const { trusted } =     require('mongoose');
 
 
 // @desc Get all notes 
@@ -15,13 +17,33 @@ const verifyJWT = require('../middelwares/verifyJWT')
 const app = express();
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
+app.use(verifyJWT)
 
-const getAllSaves = asyncHandler(verifyJWT, async (req, res, next) => {
+// const getAllSaves = (, async(req, res, next) => {
+//    // console.log("getAll gets called" + req.headers.authorization);
+//    // verifyJWT(req, res, next)
+//    console.log('thiisss');
+//    // res.json(req.body)
+// })
+
+
+const getAllSaves = asyncHandler(async (req, res, next) => {
     console.log("getAll gets called");
     const saves = await Saves.find().lean();
     const pics = await pictures.find()
+    console.log('req.headers = ' + req.headers);
+    verifyJWT(req, res, next)
 
 
+    //console.log("getAll gets called" + req.headers.authorization);
+
+    const token = req.headers.authorization.split(' ')[1];
+   
+  
+    res.send('works')
+
+
+    //res.send('none')
 
     
 
@@ -30,9 +52,7 @@ const getAllSaves = asyncHandler(verifyJWT, async (req, res, next) => {
     return res.status(400).json({ message: 'No saved posts found' })
     }
 
-    console.log('req header '  + req.email);
-    console.log("this is request body in saved : " + req.headers['x-access-token']);
-   // res.json(req.body)
+   
     // res.json({ userEmail : email})
     // console.log("user email "  + email);
 })

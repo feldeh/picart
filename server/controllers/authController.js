@@ -40,7 +40,7 @@ const handleLogin = async (req, res, next) => {
                 "email": user.email 
             },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '10m' }
+            { expiresIn: '100m' }
         )
 
         //res.status(200).send(user)
