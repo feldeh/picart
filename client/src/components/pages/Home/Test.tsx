@@ -1,12 +1,14 @@
 import { CardMedia, Grid, Paper, Typography } from '@mui/material'
+import ImageCard from '../../UI/Card/Card'
 import Button from '../../UI/Button/Button'
 import { Button as MUIButton } from '@mui/material'
+
 import { useCookies } from 'react-cookie'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from '../../../api/axios'
 import StyledCard from '../../UI/Card/Card.css'
 
-export const HomeLayout = () => {
+export const Test = () => {
     const [cookies, setCookie, removeCookie] = useCookies(['userToken'])
 
     const handleLogout = () => {
@@ -21,6 +23,9 @@ export const HomeLayout = () => {
             .get('http://localhost:8080/api/saved')
             .then((response) => {
                 setPictureData(response.data)
+
+                console.log('pictureData: ' + JSON.stringify(pictureData))
+                console.log('pictureData[0]: ' + JSON.stringify(pictureData[0]))
             })
             .catch((error) => {
                 setError(error)

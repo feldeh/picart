@@ -9,9 +9,6 @@ const jwt         =     require('jsonwebtoken');
 const { trusted } =     require('mongoose');
 
 
-// @desc Get all notes 
-// @route GET /notes
-// @access Private
 
 
 const app = express();
@@ -19,13 +16,10 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(verifyJWT)
 
-// const getAllSaves = (, async(req, res, next) => {
-//    // console.log("getAll gets called" + req.headers.authorization);
-//    // verifyJWT(req, res, next)
-//    console.log('thiisss');
-//    // res.json(req.body)
-// })
 
+// @desc Get all notes
+// @route GET /notes
+// @access Private
 
 const getAllSaves = asyncHandler(async (req, res) => {
     verifyJWT(req, res)
@@ -34,27 +28,14 @@ const getAllSaves = asyncHandler(async (req, res) => {
     const pics = await pictures.find()
    
 
-    //console.log("getAll gets called" + req.headers.authorization);
-
-   
-  
-    
-
-
-    //res.send('none')
-
-    
-
-     // If no notes 
+    // If no notes 
     if (!saves?.length) {
     return res.status(400).json({ message: 'No saved posts found' })
     }
     res.json(saves)
    
-    // res.json({ userEmail : email})
-    // console.log("user email "  + email);
-})
 
+})
 
 
 // @desc Create new note
@@ -72,7 +53,8 @@ const createSave= asyncHandler(async (req, res, next) => {
 })
 
 
+
 module.exports = {
-    getAllSaves,
-    createSave
-}
+  getAllSaves,
+  createSave,
+};
