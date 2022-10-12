@@ -62,7 +62,7 @@ const ResponsiveAppBar = () => {
     }
 
     return (
-        <AppBar position="static">
+        <AppBar position="sticky">
             <Container maxWidth="xl">
                 <Toolbar
                     disableGutters
@@ -112,10 +112,7 @@ const ResponsiveAppBar = () => {
                                 onClick={handleOpenUserMenu}
                                 sx={{ p: 0 }}
                             >
-                                <Avatar
-                                    alt="Remy Sharp"
-                                    src="/static/images/avatar/2.jpg"
-                                />
+                                <Avatar src="/broken-image.jpg" />
                             </IconButton>
                         </Tooltip>
                         <Menu

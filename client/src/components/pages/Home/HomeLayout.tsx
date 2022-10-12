@@ -38,7 +38,15 @@ export const HomeLayout = () => {
             <ResponsiveAppBar />
             <Grid container>
                 {pictureData.map((picture: any, index: number) => (
-                    <Grid key={index} item container xs={6} md={4} lg={3}>
+                    <Grid
+                        key={index}
+                        item
+                        container
+                        xs={6}
+                        md={4}
+                        lg={3}
+                        sx={{ justifyContent: 'center' }}
+                    >
                         <Grid item m={0.5}>
                             <StyledCard>
                                 <CardMedia
