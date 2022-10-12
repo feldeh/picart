@@ -9,5 +9,5 @@ export const NotFound = () => {
         }, 4000)
     }, [navigate])
 
-    return <div>404 not found!</div>
+    return <h1 style={{ color: 'black' }}>404 not found!</h1>
 }
