@@ -80,7 +80,6 @@ const ResponsiveAppBar = () => {
                     <Typography
                         variant="h5"
                         noWrap
-                        component="a"
                         onClick={() => {
                             navigate('/')
                         }}
