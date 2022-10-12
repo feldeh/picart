@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem'
 import PinterestIcon from '@mui/icons-material/Pinterest'
 import AddIcon from '@mui/icons-material/Add'
 import { useCookies } from 'react-cookie'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 const pages = ['Products', 'Pricing', 'Blog']
 const settings = ['Profile', 'Account', 'Logout']
@@ -68,14 +68,22 @@ const ResponsiveAppBar = () => {
                     disableGutters
                     sx={{ display: 'flex', justifyContent: 'space-between' }}
                 >
-                    <PinterestIcon
-                        fontSize="large"
-                        sx={{ display: 'flex', mr: 1 }}
-                    />
+                    <Link to="/">
+                        <PinterestIcon
+                            fontSize="large"
+                            onClick={() => {
+                                navigate('/')
+                            }}
+                            sx={{ display: 'flex', mr: 1, color: 'white' }}
+                        />
+                    </Link>
                     <Typography
                         variant="h5"
                         noWrap
                         component="a"
+                        onClick={() => {
+                            navigate('/')
+                        }}
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
