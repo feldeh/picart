@@ -6,8 +6,7 @@ const { TypePredicateKind } = require('typescript')
 const savedSchema = new mongoose.Schema({
     
     user: {
-        //type: mongoose.Schema.Types.ObjectId,
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'user'
     },

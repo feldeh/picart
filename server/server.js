@@ -8,6 +8,8 @@ const dbConnection = require('./database/dbConnection');
 const registerRoutes = require('./routes/registerRoutes');
 const authRoutes = require('./routes/authRoutes');
 const savedRouter = require('./routes/savedRoutes');
+const feedRouter = require('./routes/feedRoutes');
+
 const { default: mongoose } = require('mongoose');
 
 //database connection
@@ -38,6 +40,7 @@ app.use(
 app.use('/api/register', registerRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/saved', savedRouter);
+app.use('/api/feed', feedRouter);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Server running on port ${port}`));

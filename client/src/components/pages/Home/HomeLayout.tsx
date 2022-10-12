@@ -20,7 +20,7 @@ export const HomeLayout = () => {
 
     const fetchPictureData = async () =>
         await axios
-            .get('http://localhost:8080/api/saved')
+            .get('http://localhost:8080/api/feed')
             .then((response) => {
                 setPictureData(response.data)
             })
