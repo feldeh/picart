@@ -73,17 +73,7 @@ export const Register = () => {
                     justifyContent: 'center',
                 }}
             >
-                <PinterestIcon
-                    color="primary"
-                    fontSize="large"
-                    sx={{
-                        display: {
-                            xs: 'flex',
-                            md: 'none',
-                        },
-                        mr: 1,
-                    }}
-                />
+                <PinterestIcon color="primary" fontSize="large" />
                 <Typography component="h1" variant="h5">
                     Sign up to see more
                 </Typography>

@@ -85,17 +85,7 @@ export const Login = () => {
                     justifyContent: 'center',
                 }}
             >
-                <PinterestIcon
-                    color="primary"
-                    fontSize="large"
-                    sx={{
-                        display: {
-                            xs: 'flex',
-                            md: 'none',
-                        },
-                        mr: 1,
-                    }}
-                />
+                <PinterestIcon color="primary" fontSize="large" />
                 <Typography component="h1" variant="h5">
                     Log in to see more
                 </Typography>
