@@ -32,8 +32,6 @@ Picart uses a number of open source projects to work properly:
 - [Emotion]
 
 Made by Felicien De Hertogh, Jaggar Yussef, Therese Tshimanga
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
 
 
 
