@@ -28,8 +28,8 @@ Picart uses a number of open source projects to work properly:
 - [node.js] - evented I/O for the backend
 - [Express] - fast node.js network app framework [@tjholowaychuk]
 - [React.js](https://github.com/facebook/react#react-----) - a JavaScript library for building user interfaces.
-- [Vite]
-- [Emotion]
+- [Vite](https://vitejs.dev/) - a JavaScript bundler
+- [Emotion](https://emotion.sh/docs/introduction) -  a CSS-in-JS library
 
 Made by Felicien De Hertogh, Jaggar Yussef, Therese Tshimanga
 
