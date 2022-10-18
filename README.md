@@ -2,7 +2,7 @@
 ## _ A Pinterest Remake _
 
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+
 
 Picart is a lightweight remake of image sharing website Pinterest built for an assignment. The goal was to demonstrate the ability to build a registeration/login interface and a user-specific feed populated by a selection of  curated photos from [Pexels](https://www.pexels.com/api/) image and video API. 
 
